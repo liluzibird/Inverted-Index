@@ -42,17 +42,17 @@ for i, row in data.iterrows():
 
     # Applying lemmatization
     # --> add your Python code here
-    lemmatized_tokens = [lemmas.get(token, token) for token in tokens]
+    lemmatizedTokens = [lemmas.get(token, token) for token in tokens] #using dictionary lookup to replace with lemmas defined above
     
 
 
     # Building the inverted index
     # --> add your Python code here
-    for term in lemmatized_tokens:
+    for term in lemmatizedTokens:
         if term not in invertedIndex:
-            invertedIndex[term] = []
+            invertedIndex[term] = [] #create empty list if not term doesn't exist
         if docID not in invertedIndex[term]:
-            invertedIndex[term].append(docID)
+            invertedIndex[term].append(docID) #add docID to the list
 
 
 # Printing the inverted index with terms ordered alphabetically
@@ -60,5 +60,5 @@ for i, row in data.iterrows():
 # term1 : ['Doc1', 'Doc2']
 # term2 : ['Doc3']
 # --> add your Python code here
-for term in sorted(invertedIndex.keys()):
+for term in sorted(invertedIndex.keys()): #print alphabetical order
     print(f"{term} : {invertedIndex[term]}")
